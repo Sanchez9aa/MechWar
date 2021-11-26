@@ -1,0 +1,254 @@
+//Attack
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["avoid-mech"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"soldier","number":10}}]
+}
+
+###
+
+//Attack without protocolos
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["sl"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"soldier","number":10}}]
+}
+
+###
+
+//Good Attack with two protocols
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["avoid-mech", "closest-enemies"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"soldier","number":10}}, {"coordinates": {"x":40,"y":40}, "enemies":{"type":"soldier","number":10}}]
+}
+
+###
+
+//Attack with protocols conflicts
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["avoid-mech", "prioritize-mech"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"soldier","number":10}}, {"coordinates": {"x":40,"y":40}, "enemies":{"type":"soldier","number":10}}]
+}
+
+###
+
+//Attack with one wrong protocol
+
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["avoid-mech", "mech"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"soldier","number":10}}, {"coordinates": {"x":40,"y":40}, "enemies":{"type":"soldier","number":10}}]
+}
+
+###
+
+//Attack with 2 protocols and one coordinates to skip
+
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["avoid-mech", "closest-enemies"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"soldier","number":10}}, {"coordinates": {"x":2000,"y":2000}, "enemies":{"type":"soldier","number":10}}]
+}
+
+###
+
+//Attack with closets enemies protocol
+
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["closest-enemies"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"soldier","number":10}}, {"coordinates": {"x":100,"y":0}, "enemies":{"type":"soldier","number":10}}]
+}
+
+###
+
+//Attack with furthest enemies protocol
+
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["furthest-enemies"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"soldier","number":10}}, {"coordinates": {"x":100,"y":0}, "enemies":{"type":"soldier","number":10}}]
+}
+
+###
+
+//Attack with assist-alies protocol with just one allie
+
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["assist-allies"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"soldier","number":10}, "allies": 5}, {"coordinates": {"x":100,"y":0}, "enemies":{"type":"soldier","number":10}}]
+}
+
+###
+
+//Attack with assist-alies protocol with two allies
+
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["assist-allies"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"soldier","number":10}, "allies": 5}, {"coordinates": {"x":100,"y":0}, "enemies":{"type":"soldier","number":10}, "allies": 15}]
+}
+
+###
+
+//Attack with assist-alies protocol without allies
+
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["assist-allies"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"soldier","number":10}}, {"coordinates": {"x":100,"y":0}, "enemies":{"type":"soldier","number":10}}]
+}
+
+###
+
+//Attack with avoid-crossfire protocol with one allie
+
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["avoid-crossfire"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"soldier","number":10}}, {"coordinates": {"x":100,"y":0}, "enemies":{"type":"soldier","number":10}, "allies": 15}]
+}
+
+###
+
+//Attack with avoid-crossfire protocol only with allies
+
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["avoid-crossfire"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"soldier","number":10}, "allies":5}, {"coordinates": {"x":100,"y":0}, "enemies":{"type":"soldier","number":10}, "allies": 15}]
+}
+
+###
+
+//Attack with prioritize-mech without mechs
+
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["prioritize-mech"],
+  "scan":[{"coordinates": {"x":0,"y":50}, "enemies":{"type":"soldier","number":10}}, {"coordinates": {"x":100,"y":0}, "enemies":{"type":"soldier","number":10}, "allies": 15}]
+}
+
+###
+
+//Attack with prioritize-mech with 1 soldier and 1 mech
+
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["prioritize-mech"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"mech","number":2}}, {"coordinates": {"x":20,"y":0}, "enemies":{"type":"soldier","number":10}, "allies": 15}]
+}
+
+###
+
+//Attack with prioritize-mech with only mechs
+
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["prioritize-mech"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"mech","number":10}}, {"coordinates": {"x":30,"y":0}, "enemies":{"type":"mech","number":3}, "allies": 15}]
+}
+
+
+###
+
+//Attack with avoid-mech without mechs
+
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["avoid-mech"],
+  "scan":[{"coordinates": {"x":0,"y":50}, "enemies":{"type":"soldier","number":10}}, {"coordinates": {"x":100,"y":0}, "enemies":{"type":"soldier","number":10}, "allies": 15}]
+}
+
+###
+
+//Attack with avoid-mech with 1 soldier and 1 mech
+
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["avoid-mech"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"mech","number":2}}, {"coordinates": {"x":60,"y":0}, "enemies":{"type":"soldier","number":10}, "allies": 15}]
+}
+
+###
+
+//Attack with avoid-mech with only mechs
+
+POST http://localhost:8800/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["avoid-mech"],
+  "scan":[{"coordinates": {"x":0,"y":40}, "enemies":{"type":"mech","number":10}}, {"coordinates": {"x":30,"y":0}, "enemies":{"type":"mech","number":3}, "allies": 15}]
+}
+
+###
+
+//Attack with two protocols
+POST http://localhost:8888/radar HTTP/1.1
+Content-Type: application/json
+
+{
+  "protocols":["closest-enemies","avoid-mech"],
+  "scan":[
+    {
+      "coordinates":{"x":0,"y":1},
+      "enemies":{"type":"mech","number":1}
+    },
+    {
+      "coordinates":{"x":0,"y":10},
+      "enemies":{"type":"soldier","number":10}
+    },
+    {
+      "coordinates":{"x":0,"y":99},
+      "enemies":{"type":"mech","number":1}
+    }
+  ]
+}
+
+###
+
+//Attack with three protocols
+POST http://localhost:8888/radar HTTP/1.1
+Content-Type: application/json
+
+{"protocols":["closest-enemies","prioritize-mech","avoid-crossfire"],"scan":[{"enemies":{"number":1,"type":"mech"},"coordinates":{"x":89,"y":13}},{"enemies":{"type":"soldier","number":10},"allies":3,"coordinates":{"y":35,"x":11}},{"enemies":{"type":"soldier","number":10},"coordinates":{"y":49,"x":19}},{"enemies":{"type":"soldier","number":30},"allies":5,"coordinates":{"y":21,"x":38}},{"enemies":{"number":30,"type":"soldier"},"allies":8,"coordinates":{"x":10,"y":39}},{"enemies":{"type":"soldier","number":15},"coordinates":{"x":13,"y":38}},{"enemies":{"number":60,"type":"soldier"},"coordinates":{"x":13,"y":15}},{"enemies":{"number":40,"type":"soldier"},"coordinates":{"y":19,"x":30}},{"coordinates":{"x":30,"y":11},"enemies":{"number":20,"type":"soldier"}},{"coordinates":{"x":15,"y":19},"allies":11,"enemies":{"number":80,"type":"soldier"}},{"coordinates":{"x":22,"y":15},"allies":13,"enemies":{"number":10,"type":"soldier"}},{"coordinates":{"y":19,"x":10},"enemies":{"type":"soldier","number":10}},{"enemies":{"type":"soldier","number":10},"allies":15,"coordinates":{"x":94,"y":11}},{"enemies":{"number":30,"type":"soldier"},"coordinates":{"x":10,"y":19}},{"enemies":{"type":"soldier","number":30},"allies":16,"coordinates":{"x":90,"y":18}},{"enemies":{"number":15,"type":"soldier"},"allies":5,"coordinates":{"y":51,"x":80}},{"enemies":{"type":"soldier","number":60},"allies":5,"coordinates":{"y":91,"x":70}},{"enemies":{"type":"soldier","number":40},"coordinates":{"y":11,"x":30}},{"enemies":{"type":"mech","number":20},"coordinates":{"y":95,"x":30}},{"enemies":{"type":"soldier","number":80},"allies":8,"coordinates":{"x":1,"y":89}},{"enemies":{"number":10,"type":"soldier"},"coordinates":{"x":3,"y":11}},{"enemies":{"number":10,"type":"soldier"},"coordinates":{"x":54,"y":19}},{"enemies":{"type":"soldier","number":10},"coordinates":{"x":22,"y":38}},{"enemies":{"number":30,"type":"soldier"},"allies":10,"coordinates":{"y":10,"x":3}},{"coordinates":{"x":43,"y":13},"enemies":{"number":30,"type":"soldier"}},{"enemies":{"number":15,"type":"soldier"},"allies":10,"coordinates":{"x":51,"y":13}},{"coordinates":{"y":30,"x":91},"allies":10,"enemies":{"type":"soldier","number":60}},{"coordinates":{"y":30,"x":11},"enemies":{"number":40,"type":"soldier"}},{"enemies":{"type":"soldier","number":20},"coordinates":{"x":91,"y":15}},{"enemies":{"number":80,"type":"soldier"},"allies":10,"coordinates":{"y":22,"x":51}},{"coordinates":{"x":91,"y":10},"enemies":{"number":10,"type":"mech"}},{"enemies":{"type":"soldier","number":10},"coordinates":{"x":11,"y":84}},{"enemies":{"number":10,"type":"soldier"},"allies":10,"coordinates":{"x":91,"y":65}},{"enemies":{"number":30,"type":"mech"},"allies":3,"coordinates":{"y":53,"x":81}},{"coordinates":{"y":70,"x":15},"allies":4,"enemies":{"type":"soldier","number":30}},{"enemies":{"type":"soldier","number":15},"allies":4,"coordinates":{"y":83,"x":19}},{"enemies":{"number":60,"type":"soldier"},"coordinates":{"y":46,"x":11}},{"coordinates":{"y":26,"x":59},"allies":6,"enemies":{"type":"soldier","number":40}},{"enemies":{"number":20,"type":"soldier"},"allies":6,"coordinates":{"x":98,"y":57}},{"enemies":{"number":80,"type":"mech"},"coordinates":{"x":11,"y":58}},{"enemies":{"number":10,"type":"mech"},"coordinates":{"x":91,"y":39}},{"coordinates":{"x":83,"y":37},"enemies":{"type":"mech","number":10}},{"enemies":{"type":"mech","number":1},"allies":6,"coordinates":{"y":11,"x":0}}]}
