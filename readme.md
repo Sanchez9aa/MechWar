@@ -1,13 +1,14 @@
 <h1>Mech Wars</h1>
 
-Este proyecto nos pide una seria de protocolos y coordenadas conde tendremos x enemigos, segun los protocolos se atacarán unas coordenadas donde haya x enemigo.
+<p>Este proyecto nos pide una seria de protocolos y coordenadas conde tendremos x enemigos, segun los protocolos se atacarán unas coordenadas donde haya x enemigo.</p>
 
-Deployed at - https://martiansrobots.herokuapp.com/
+Deployed at - https://mechswar.herokuapp.com/
 
 <h2>ENDPOINTS</h2>
-1 ENDPOINTS ha sido creado, 1 para el post.
 
-POST /radar
+<p>1 ENDPOINTS ha sido creado, 1 para el post.</p>
+
+<h3>POST /radar</h3>
 
 El cuerpo del mensaje será el siguiente:
 
@@ -40,14 +41,17 @@ The following answer will be found:
 }
 </pre>
 
-Los siguientes casos de error están recogidos.
+<p>Los siguientes casos de error están recogidos.</p>
 
-- No se envía protocolo
-- Se envían protocolos no permitidos
-- Se envían protocolos en conflicto
-- Se envían ataques a más de 100 metros de distancia
+<ul>
+<li> No se envía protocolo </li>
+<li> Se envían protocolos no permitidos </li>
+<li> Se envían protocolos en conflicto </li>
+<li> Se envían ataques a más de 100 metros de  distancia </li>
+</ul>
 
-Test
+<h2>Test</h2>
+
 No hay implementado testing para este proyecto.
 
 <h2>Code challenge</h2>
