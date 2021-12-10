@@ -1,6 +1,6 @@
 <h1>Mech Wars</h1>
 
-<p>Este proyecto nos pide una seria de protocolos y coordenadas donde tendremos x enemigos, segun los protocolos se atacarán unas coordenadas donde haya x enemigo.</p>
+<p>Este proyecto nos pide una serie de protocolos y coordenadas donde tendremos x enemigos, según los protocolos se atacarán unas coordenadas donde haya x enemigo.</p>
 
 Deployed at - https://mechswar.herokuapp.com/
 
